@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Quantico:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,7 @@
 
 :root {
   background: transparent !important;
+  color-scheme: normal;
 }
 
 html,
@@ -14,27 +15,98 @@ body,
   width: 100%;
   height: 100%;
   margin: 0;
+  padding: 0;
   background: transparent !important;
   overflow: hidden;
 }
 
 body {
-  font-family: 'Geist', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 * {
   box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
+button,
+input,
+textarea {
+  font: inherit;
 }
 
-::-webkit-scrollbar-track {
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.octagon-frame {
+  --octa-cut: 12px;
+  --octa-bg: rgba(26, 31, 39, 0.86);
+  --octa-border: rgba(255, 255, 255, 0.09);
+}
+
+.octagon-frame::before,
+.octagon-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: polygon(
+    var(--octa-cut) 0,
+    calc(100% - var(--octa-cut)) 0,
+    100% var(--octa-cut),
+    100% calc(100% - var(--octa-cut)),
+    calc(100% - var(--octa-cut)) 100%,
+    var(--octa-cut) 100%,
+    0 calc(100% - var(--octa-cut)),
+    0 var(--octa-cut)
+  );
+}
+
+.octagon-frame::before {
+  z-index: -2;
+  background: var(--octa-border);
+}
+
+.octagon-frame::after {
+  z-index: -1;
+  inset: 1px;
+  background: var(--octa-bg);
+  clip-path: polygon(
+    max(calc(var(--octa-cut) - 1px), 0px) 0,
+    calc(100% - max(calc(var(--octa-cut) - 1px), 0px)) 0,
+    100% max(calc(var(--octa-cut) - 1px), 0px),
+    100% calc(100% - max(calc(var(--octa-cut) - 1px), 0px)),
+    calc(100% - max(calc(var(--octa-cut) - 1px), 0px)) 100%,
+    max(calc(var(--octa-cut) - 1px), 0px) 100%,
+    0 calc(100% - max(calc(var(--octa-cut) - 1px), 0px)),
+    0 max(calc(var(--octa-cut) - 1px), 0px)
+  );
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 229, 43, 0.55) rgba(255, 255, 255, 0.04);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.04);
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(138, 255, 102, 0.35);
-  border-radius: 999px;
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(139, 229, 43, 0.55);
+}
+
+.scrollbar-thin::-webkit-scrollbar-corner {
+  background: transparent;
 }

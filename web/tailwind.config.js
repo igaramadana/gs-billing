@@ -1,21 +1,28 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['class'],
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        brand: '#8aff66',
-        panel: '#0b0f0a',
-        panelSoft: '#10170f',
-        stroke: 'rgba(138, 255, 102, 0.18)'
+        primary: '#8BE52B',
+        'primary-60': '#6FC122',
+        'primary-70': '#5BA31C',
+        accent: '#8BE52B',
+        tertiary: '#D7FF5A',
+        neutral: '#11151B',
+        surface: '#272B33',
+        'surface-2': '#1A1F27',
+        fg: '#FFFFFF',
+        muted: '#A9B0BA',
+        border: '#374151',
+        'border-soft': '#FFFFFF14',
+        overlay: '#0B0E13CC',
+        error: '#FF5A5F'
       },
       fontFamily: {
-        oswald: ['Oswald', 'sans-serif'],
-        geist: ['Geist', 'Inter', 'system-ui', 'sans-serif']
-      },
-      boxShadow: {
-        glow: '0 0 35px rgba(138, 255, 102, 0.12)'
+        heading: ['Quantico', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
       }
     }
   },
